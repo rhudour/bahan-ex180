@@ -1,10 +1,10 @@
 # bahan-ex180
 
-* [**install podman**]
-* sudo yum install podman
-* sudo podman -v
-* konfig registries >> /etc/containers/registries.conf
-* konfig cni >> /etc/cni/net.d/87-podman-bridge.conflist
+## [**install podman**]
+		sudo yum install podman
+		sudo podman -v
+		konfig registries >> /etc/containers/registries.conf
+		konfig cni >> /etc/cni/net.d/87-podman-bridge.conflist
 #
 * [**run container**]
 * [root@workstation do180-practice]#  podman run --name mysql-basic -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypa55 -e MYSQL_DATABASE=items -e * MYSQL_ROOT_PASSWORD=r00tpa55 -d rhel8/mysql-80
