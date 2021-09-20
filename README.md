@@ -24,8 +24,8 @@
         * Error initializing source docker://registry.access.redhat.com/rhel8/mysql-80:latest: Error reading manifest latest in registry.access.redhat.com/rhel8/mysql-80: unsupported: This repo requires terms acceptance and is only available on registry.redhat.io
         * Error initializing source docker://registry.redhat.io/rhel8/mysql-80:latest: unable to retrieve auth token: invalid username/password: unauthorized: Please  login to the Red Hat Registry using your Customer Portal credentials. Further instructions can be found here: https://access.redhat.com/RegistryAuthentication
         * Error initializing source docker://rhel8/mysql-80:latest: Error reading manifest latest in docker.io/rhel8/mysql-80: errors:
-	denied: requested access to the resource is denied
-	unauthorized: authentication required
+denied: requested access to the resource is denied 
+unauthorized: authentication required
         * Error initializing source docker://quay.io/rhel8/mysql-80:latest: Error reading manifest latest in quay.io/rhel8/mysql-80: unauthorized: access to the requested resource is not authorized
 
 
