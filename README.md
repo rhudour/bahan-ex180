@@ -36,8 +36,6 @@
 	[root@workstation do180-practice]#
 	[root@workstation do180-practice]#
 	[root@workstation do180-practice]#  podman run --name mysql-basic -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypa55 -e MYSQL_DATABASE=items -e MYSQL_ROOT_PASSWORD=r00tpa55 -d rhel8/mysql-80
-	[root@workstation do180-practice]#
-	[root@workstation do180-practice]#
 	Trying to pull registry.do180.lab:5000/rhel8/mysql-80...
 	manifest unknown: manifest unknown
 	Trying to pull registry.access.redhat.com/rhel8/mysql-80...
