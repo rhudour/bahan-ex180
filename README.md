@@ -1,8 +1,13 @@
 # bahan-ex180
 
-* [**build image and run as container-1**]
-#1
-sudo yum install podman 
-sudo podman -version
+* [**install podman**]
+* sudo yum install podman
+* sudo podman -v
+* konfig registries >> /etc/containers/registries.conf
+* konfig cni >> /etc/cni/net.d/87-podman-bridge.conflist
 
-* [**belajarbareng-2**]
+* [**build image and run as container-1**]
+
+
+
+* [**build image and run as container-1**]
