@@ -38,6 +38,20 @@
 	[root@workstation do180-practice]#  podman run --name mysql-basic -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypa55 -e MYSQL_DATABASE=items -e MYSQL_ROOT_PASSWORD=r00tpa55 -d rhel8/mysql-80
 	[root@workstation do180-practice]#
 	[root@workstation do180-practice]#
-	
+	Trying to pull registry.do180.lab:5000/rhel8/mysql-80...
+	manifest unknown: manifest unknown
+	Trying to pull registry.access.redhat.com/rhel8/mysql-80...
+	unsupported: This repo requires terms acceptance and is only available on registry.redhat.io
+	Trying to pull registry.redhat.io/rhel8/mysql-80...
+	Getting image source signatures
+	Copying blob 1c176e0fbe37 done
+	Copying blob 356f18f3a935 done
+	Copying blob 359fed170a21 done
+	Copying blob 296e14ee2414 done
+	Copying config 7d3ef14d6a done
+	Writing manifest to image destination
+	Storing signatures
+	087eefc6dd2e2df012587b8dab272982ead8027348bf90855c15cba2172064f8
+	[root@workstation do180-practice]#
 
 * [**build image and run as container-1**]
