@@ -51,5 +51,10 @@
 	Storing signatures
 	087eefc6dd2e2df012587b8dab272982ead8027348bf90855c15cba2172064f8
 	[root@workstation do180-practice]#
+	[root@workstation vagrant]# podman ps
+	CONTAINER ID  IMAGE                                     COMMAND     CREATED       STATUS           PORTS  NAMES
+	087eefc6dd2e  registry.redhat.io/rhel8/mysql-80:latest  run-mysqld  20 hours ago  Up 20 hours ago         mysql-basic
+	[root@workstation vagrant]#
+	[root@workstation vagrant]#
 
 * [**build image and run as container-1**]
