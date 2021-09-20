@@ -27,11 +27,17 @@
 	denied: requested access to the resource is denied 
 	unauthorized: authentication required
 	Error initializing source docker://quay.io/rhel8/mysql-80:latest: Error reading manifest latest in quay.io/rhel8/mysql-80: unauthorized: access to the requested resource is not authorized
+	[root@workstation do180-practice]#
+	[root@workstation do180-practice]#
 	[root@workstation do180-practice]# podman login registry.redhat.io
 	Username: feby.ichsan@datacomm.co.id
 	Password:
 	Login Succeeded!
+	[root@workstation do180-practice]#
+	[root@workstation do180-practice]#
 	[root@workstation do180-practice]#  podman run --name mysql-basic -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypa55 -e MYSQL_DATABASE=items -e MYSQL_ROOT_PASSWORD=r00tpa55 -d rhel8/mysql-80
-
+	[root@workstation do180-practice]#
+	[root@workstation do180-practice]#
+	
 
 * [**build image and run as container-1**]
