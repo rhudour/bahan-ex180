@@ -56,5 +56,62 @@
 	087eefc6dd2e  registry.redhat.io/rhel8/mysql-80:latest  run-mysqld  20 hours ago  Up 20 hours ago         mysql-basic
 	[root@workstation vagrant]#
 	[root@workstation vagrant]#
+	[root@workstation vagrant]# podman exec -it mysql-basic /bin/sh
+	sh-4.4$ mysql -uroot
+	Welcome to the MySQL monitor.  Commands end with ; or \g.
+	Your MySQL connection id is 8
+	Server version: 8.0.21 Source distribution
+
+	Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+	Oracle is a registered trademark of Oracle Corporation and/or its
+	affiliates. Other names may be trademarks of their respective
+	owners.
+
+	Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+	mysql> show databases;
+	+--------------------+
+	| Database           |
+	+--------------------+
+	| information_schema |
+	| items              |
+	| mysql              |
+	| performance_schema |
+	| sys                |
+	+--------------------+
+	5 rows in set (0.31 sec)
+
+	mysql> use items;
+	Database changed
+	mysql> CREATE TABLE Projects (id int(11) NOT NULL, name varchar(255) DEFAULT NULL, code varchar(255) DEFAULT NULL, PRIMARY KEY (id));
+	Query OK, 0 rows affected, 1 warning (0.15 sec)
+
+	mysql> show tables;
+	+-----------------+
+	| Tables_in_items |
+	+-----------------+
+	| Projects        |
+	+-----------------+
+	1 row in set (0.04 sec)
+
+	mysql> insert into Projects (id, name, code) values (1, 'bahan', 'test180');
+	Query OK, 1 row affected (0.15 sec)
+
+	mysql> select * from Projects;
+	+----+-------+---------+
+	| id | name  | code    |
+	+----+-------+---------+
+	|  1 | bahan | test180 |
+	+----+-------+---------+
+	1 row in set (0.01 sec)
+
+	mysql> exit
+	Bye
+	sh-4.4$ exit
+	exit
+	[root@workstation vagrant]#
+	[root@workstation vagrant]#
+	
 
 * [**build image and run as container-1**]
