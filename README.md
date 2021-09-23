@@ -130,5 +130,78 @@
 	-rw-r-----. 1 27 27 10485760 Sep 23 04:14 undo_001
 	-rw-r-----. 1 27 27 10485760 Sep 23 04:14 undo_002
 	[root@workstation vagrant]#
+#
+## [**port mapping, commit, tag & push container image to registries**]
+	[root@workstation vagrant]#
+	[root@workstation vagrant]# podman run --name my-apache-app -p 8080:80 -d docker.io/httpd
+	a2ff324e93220f9f7d33b43ac4bc1437b4c58c6fd9693a709d09c57b5cfd9f94
+	[root@workstation vagrant]#
+	[root@workstation vagrant]# podman ps
+	CONTAINER ID  IMAGE                                     COMMAND           CREATED        STATUS            PORTS                 NAMES
+	a2ff324e9322  docker.io/library/httpd:latest            httpd-foreground  9 seconds ago  Up 5 seconds ago  0.0.0.0:8080->80/tcp  my-apache-app
+	9bc35c172d5a  registry.redhat.io/rhel8/mysql-80:latest  run-mysqld        5 hours ago    Up 5 hours ago                          persist-db
+	087eefc6dd2e  registry.redhat.io/rhel8/mysql-80:latest  run-mysqld        4 days ago     Up 6 hours ago                          mysql-basic
+	[root@workstation vagrant]#
+	[root@workstation vagrant]# curl localhost:8080
+	hi from container
+	[root@workstation vagrant]#
+	[root@workstation vagrant]# podman ps
+	CONTAINER ID  IMAGE                                     COMMAND           CREATED        STATUS            PORTS                 NAMES
+	a2ff324e9322  docker.io/library/httpd:latest            httpd-foreground  5 minutes ago  Up 5 minutes ago  0.0.0.0:8080->80/tcp  my-apache-app
+	9bc35c172d5a  registry.redhat.io/rhel8/mysql-80:latest  run-mysqld        5 hours ago    Up 5 hours ago                          persist-db
+	087eefc6dd2e  registry.redhat.io/rhel8/mysql-80:latest  run-mysqld        4 days ago     Up 6 hours ago                          mysql-basic
+	[root@workstation vagrant]#
+	[root@workstation vagrant]# podman stop my-apache-app
+	a2ff324e93220f9f7d33b43ac4bc1437b4c58c6fd9693a709d09c57b5cfd9f94
+	[root@workstation vagrant]#
+	[root@workstation vagrant]# podman commit my-apache-app httpdku
+	Getting image source signatures
+	Copying blob d000633a5681 skipped: already exists
+	Copying blob 2136d1b3a4af skipped: already exists
+	Copying blob 3453c54913b8 skipped: already exists
+	Copying blob 076616e79830 skipped: already exists
+	Copying blob 8e72f30b4bc9 skipped: already exists
+	Copying blob 13d424737bfc done
+	Copying config 255d240a96 done
+	Writing manifest to image destination
+	Storing signatures
+	255d240a96a29d3a4a65dac276eba0db97138df60a0eb42128afc25b7ad21107
+	[root@workstation vagrant]#
+	[root@workstation vagrant]# podman images
+	REPOSITORY                          TAG          IMAGE ID       CREATED          SIZE
+	localhost/httpdku                   latest       255d240a96a2   17 seconds ago   142 MB
+	docker.io/library/httpd             latest       5ebe6e00baf9   37 hours ago     142 MB
+	localhost/skeeter                   1.0          40917d4414a2   10 days ago      391 MB
+	quay.io/feby_ichsan/duff-nginx      1.0          a4a391cc3e1d   10 days ago      569 MB
+	registry:5000/httpd                 twerks       4e857675bd6d   10 days ago      57.1 MB
+	registry.do180.lab:5000/mariadb     latest       6b01262bc780   3 weeks ago      416 MB
+	registry.do180.lab:5000/httpd       2.4-alpine   5a4f32436238   3 weeks ago      57.1 MB
+	registry.do180.lab:5000/httpd       latest       c8ca530172a8   5 weeks ago      142 MB
+	registry.redhat.io/rhel8/mysql-80   latest       7d3ef14d6a15   7 weeks ago      611 MB
+	docker.io/library/centos            8            300e315adb2f   9 months ago     217 MB
+	docker.io/library/centos            7            8652b9f0cb4c   10 months ago    212 MB
+	[root@workstation vagrant]#
+	[root@workstation vagrant]# podman tag httpdku docker.io/voidarise1117/httpdku:v1
+	[root@workstation vagrant]#
+	[root@workstation vagrant]# podman images
+	REPOSITORY                          TAG          IMAGE ID       CREATED         SIZE
+	localhost/httpdku                   latest       255d240a96a2   3 minutes ago   142 MB
+	docker.io/voidarise1117/httpdku     v1           255d240a96a2   3 minutes ago   142 MB
+	docker.io/library/httpd             latest       5ebe6e00baf9   37 hours ago    142 MB
+	localhost/skeeter                   1.0          40917d4414a2   10 days ago     391 MB
+	quay.io/feby_ichsan/duff-nginx      1.0          a4a391cc3e1d   10 days ago     569 MB
+	registry:5000/httpd                 twerks       4e857675bd6d   10 days ago     57.1 MB
+	registry.do180.lab:5000/mariadb     latest       6b01262bc780   3 weeks ago     416 MB
+	registry.do180.lab:5000/httpd       2.4-alpine   5a4f32436238   3 weeks ago     57.1 MB
+	registry.do180.lab:5000/httpd       latest       c8ca530172a8   5 weeks ago     142 MB
+	registry.redhat.io/rhel8/mysql-80   latest       7d3ef14d6a15   7 weeks ago     611 MB
+	docker.io/library/centos            8            300e315adb2f   9 months ago    217 MB
+	docker.io/library/centos            7            8652b9f0cb4c   10 months ago   212 MB
+	[root@workstation vagrant]#
+	[root@workstation vagrant]#
+#
+## [**yyy**]
+
+	
 
 * [**build image and run as container-1**]
